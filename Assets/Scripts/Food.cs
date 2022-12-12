@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace DogVsCat
 {
-	public class StartBtn : MonoBehaviour
+	public class Food : MonoBehaviour
 	{
 	    // Start is called before the first frame update
 	    void Start()
@@ -16,12 +15,11 @@ namespace DogVsCat
 	    // Update is called once per frame
 	    void Update()
 	    {
-	        
+			transform.position += new Vector3(0, 0.5f, 0);
+			if ( transform.position.y > 26.0f)
+            {
+				Destroy(gameObject);
+            }
 	    }
-
-		public void GameStart()
-        {
-			SceneManager.LoadScene("MainScene");
-        }
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace DogVsCat
 {
-	public class StartBtn : MonoBehaviour
+	public class RetryBtn : MonoBehaviour
 	{
 	    // Start is called before the first frame update
 	    void Start()
@@ -19,7 +19,7 @@ namespace DogVsCat
 	        
 	    }
 
-		public void GameStart()
+		public void ReGame()
         {
 			SceneManager.LoadScene("MainScene");
         }

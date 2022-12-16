@@ -8,12 +8,20 @@ namespace DogVsCat
 	{
 		float full   = 5.0f;
 		float energy = 0.0f;
+		bool isFull = false;
+		public int type;
 
 		// Start is called before the first frame update
 		void Start()
 	    {
 			float x = Random.Range(-8.5f, 8.5f);
 			float y = 30.0f;
+
+
+			if (type == 1)
+            {
+				full = 10f;
+            }
 			transform.position = new Vector3(x, y, 0);
 		}
 
@@ -22,7 +30,17 @@ namespace DogVsCat
 	    {
 			if ( energy < full)
             {
-				transform.position += new Vector3(0, -0.05f, 0);
+
+				if (type == 0)
+				{
+					transform.position += new Vector3(0, -0.005f, 0);
+				}
+				else if (type == 1)
+                {
+					transform.position += new Vector3(0, -0.01f, 0);
+				}
+
+					
 
 				if ( transform.position.y < -16.0f)
                 {
@@ -58,8 +76,13 @@ namespace DogVsCat
 				}
                 else
                 {
-					transform.Find("Hungry").gameObject.SetActive(false);
-					transform.Find("Full").gameObject.SetActive(true);
+					if (isFull == false)
+                    {
+						GameManager.I.addCat();
+						transform.Find("Hungry").gameObject.SetActive(false);
+						transform.Find("Full").gameObject.SetActive(true);
+						isFull = true;
+					}
 				}
 			}
         }
